@@ -1,0 +1,49 @@
+.app-layout{
+    margin: 1% 5%;
+}
+
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+}
+.logo-container img{
+    width: 90px;
+}
+.list-items ul{
+    display: flex;
+    font-size: 18px;
+}
+.list-items{
+    margin: 0 10%;
+}
+.list-items ul li{
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px;
+}
+.restaurent-items-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.restaurent-card:hover{
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.restaurent-card img{
+    width:150px;
+}
+.restaurent-card{
+    padding: 10px;
+    margin: 5px 10px;
+    background-color: rgb(218, 216, 216);
+    width:250px;
+}
+.restaurent-card .restaurent-dynamicDetails{
+    display: flex;
+    justify-content: space-between;
+}
