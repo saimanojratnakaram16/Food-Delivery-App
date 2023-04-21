@@ -25,7 +25,6 @@
 }
 .restaurent-items-container{
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -34,9 +33,20 @@
     cursor: pointer;
 }
 
-.restaurent-card img{
-    width:150px;
+.restaurent-img{
+    height: 160px;
 }
+.restaurent-img img{
+    height: 100%;
+}
+
+.restaurent-name{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
 .restaurent-card{
     padding: 10px;
     margin: 5px 10px;
@@ -46,4 +56,29 @@
 .restaurent-card .restaurent-dynamicDetails{
     display: flex;
     justify-content: space-between;
+}
+
+.search-container{
+    margin: 10px;
+    padding: 20px;
+}
+.search-container .search-input{
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    width: 40%;
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+.search-container .search-btn{
+    height: 42px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    width: 10%;
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 15px;
+    background: white;
+    cursor:pointer;
 }

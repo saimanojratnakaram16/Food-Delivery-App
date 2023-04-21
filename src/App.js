@@ -6,7 +6,6 @@ import BodyComponent from "./components/BodyComponent";
 rootElement = ReactDOM.createRoot(document.getElementById('root'));
 
 const AppLayout = ()=>{
-    console.log(<HeaderComponent/>)
     return (
         <div className="app-layout">
            <HeaderComponent/>

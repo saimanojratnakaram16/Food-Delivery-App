@@ -11,6 +11,7 @@ export default function HeaderComponent() {
           alt="company logo"
         />
       </div>
+     
       <NavList listItems={["Home", "About","Contact US", "Cart"]} />
     </div>
   );
