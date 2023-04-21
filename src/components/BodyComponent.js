@@ -32,7 +32,7 @@ export default function BodyComponent() {
     console.log(filteredData);
     setFilteredRestaurents(filteredData);
   };
-  return allRestaurents.length == 0 ? (
+  return allRestaurents?.length === 0 ? (
     <Skimmer />
   ) : (
     <div>
@@ -51,7 +51,7 @@ export default function BodyComponent() {
             Search
           </button>
         </div>
-        {filteredRestaurents.length === 0 ? (
+        {filteredRestaurents?.length === 0 ? (
           <div className="center"> No Such Restaurent Exists</div>
         ) : (
           <RestaurentItems restaurentsList={filteredRestaurents} />

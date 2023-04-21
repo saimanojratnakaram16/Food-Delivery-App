@@ -29,7 +29,7 @@
 }
 
 .restaurent-card:hover{
-    border: 1px solid grey;
+    border: 1px solid rgb(218, 216, 216);
     cursor: pointer;
 }
 
@@ -37,6 +37,7 @@
     height: 160px;
 }
 .restaurent-img img{
+    border-radius: 3px;
     height: 100%;
 }
 
@@ -50,8 +51,9 @@
 .restaurent-card{
     padding: 10px;
     margin: 5px 10px;
-    background-color: rgb(218, 216, 216);
+    /* background-color: rgb(218, 216, 216); */
     width:250px;
+    border-radius: 3px;
 }
 .restaurent-card .restaurent-dynamicDetails{
     display: flex;
