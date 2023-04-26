@@ -8,5 +8,9 @@ export default function RestaurentItems({ restaurentsList }) {
       restaurentDetails={restaurent.data}
     />
   ));
-  return <div className="restaurent-items-container">{items}</div>;
+  return (
+    <div className="restaurent-items-container">
+      {items}
+    </div>
+  );
 }

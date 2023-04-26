@@ -27,13 +27,19 @@ export default function BodyComponent() {
     setFilteredRestaurents(jsonData?.data?.cards[2]?.data?.data?.cards);
   }
 
+  const handleKeyDown = (event)=>{
+    if(event.key == "Enter"){
+      handleSearch();
+    }
+  }
+  
   const handleSearch = () => {
     const filteredData = filterData(searchText, allRestaurents);
     console.log(filteredData);
     setFilteredRestaurents(filteredData);
   };
   return allRestaurents?.length === 0 ? (
-    <Skimmer />
+    <Skimmer tilesCount={10}/>
   ) : (
     <div>
       <div className="body-container">
@@ -43,6 +49,7 @@ export default function BodyComponent() {
             className="search-input"
             placeholder="Search for restaurents"
             value={searchText}
+            onKeyDown = {handleKeyDown}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}

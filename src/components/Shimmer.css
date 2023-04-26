@@ -1,0 +1,12 @@
+.shimmer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer .restaurent-card{
+    background-color: 1px solid lightgray;
+    border: 1px solid lightgray;
+    height: 315px;
+}
+.shimmer .restaurent-img{
+    background-color: lightgray;
+}
