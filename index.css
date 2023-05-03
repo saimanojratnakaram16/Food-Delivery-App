@@ -2,6 +2,11 @@ body{
     font-style: 'ProximaNova';
 }
 
+body a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .app-layout{
     margin: 1% 5%;
 }
@@ -87,4 +92,11 @@ body{
     font-size: 15px;
     background: white;
     cursor:pointer;
+}
+
+
+/* RestaurentDetails */
+.dishes-container{
+    display: flex;
+    flex-wrap: wrap;
 }

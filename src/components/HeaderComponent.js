@@ -2,6 +2,13 @@ import React from "react";
 import { LOGO_URL } from "../utils/constants";
 import NavList from "./NavList";
 
+const navs = {
+  "Home" : "/",
+  "About" : "/about",
+  "Contact Us" : "/contact",
+  "Cart" : "/cart",
+}
+
 export default function HeaderComponent() {
   return (
     <div className="header">
@@ -11,7 +18,7 @@ export default function HeaderComponent() {
           alt="company logo"
         />
       </div>
-      <NavList listItems={["Home", "About","Contact US", "Cart"]} />
+      <NavList listItems={navs} />
     </div>
   );
 }
