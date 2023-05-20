@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import RestaurentItems from "./RestaurentItems";
 import Skimmer from "./Shimmer";
+import useRestaurentsList from "../hooks/useRestaurentsList";
+import useOnlineCheck from "../hooks/useOnlineCheck";
 
 const filterData = (searchText, restaurents) => {
   const res = restaurents.filter((restaurent) =>
@@ -10,23 +12,16 @@ const filterData = (searchText, restaurents) => {
 };
 
 export default function BodyComponent() {
-  const [allRestaurents, setAllRestaurents] = useState([]);
+  
+  const allRestaurents = useRestaurentsList();
   const [filteredRestaurents, setFilteredRestaurents] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    getRestaurentsList();
-  }, []);
+  useEffect(()=>{
+    setFilteredRestaurents(allRestaurents);
+  },[allRestaurents])
 
-  async function getRestaurentsList() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671&page_type=DESKTOP_WEB_LISTING"
-    );
-    const jsonData = await data.json();
-    setAllRestaurents(jsonData?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurents(jsonData?.data?.cards[2]?.data?.data?.cards);
-  }
-
+  const isOnline = useOnlineCheck();
   const handleKeyDown = (event)=>{
     if(event.key == "Enter"){
       handleSearch();
@@ -38,6 +33,10 @@ export default function BodyComponent() {
     console.log(filteredData);
     setFilteredRestaurents(filteredData);
   };
+  console.log(isOnline);
+  if(!isOnline){
+    return <h2>You are Offline, Please check your internet connection</h2>
+  }
   return allRestaurents?.length === 0 ? (
     <Skimmer tilesCount={10}/>
   ) : (
