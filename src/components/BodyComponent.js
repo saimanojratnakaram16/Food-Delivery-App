@@ -30,22 +30,22 @@ export default function BodyComponent() {
   
   const handleSearch = () => {
     const filteredData = filterData(searchText, allRestaurents);
-    console.log(filteredData);
     setFilteredRestaurents(filteredData);
   };
-  console.log(isOnline);
   if(!isOnline){
     return <h2>You are Offline, Please check your internet connection</h2>
   }
   return allRestaurents?.length === 0 ? (
+    <div className="m-4">
     <Skimmer tilesCount={10}/>
+    </div>
   ) : (
     <div>
-      <div className="body-container">
-        <div className="search-container">
+      <div className="m-4 p-2">
+        <div className="h-10 flex justify-center">
           <input
             type="text"
-            className="search-input"
+            className="p-2 w-96 h-full border-2 border-slate-400 mr-2 rounded-md focus:border-orange-500"
             placeholder="Search for restaurents"
             value={searchText}
             onKeyDown = {handleKeyDown}
@@ -53,7 +53,7 @@ export default function BodyComponent() {
               setSearchText(e.target.value);
             }}
           />
-          <button className="search-btn" onClick={handleSearch}>
+          <button className="border-2 border-slate-400 h-full w-28 rounded-md " onClick={handleSearch}>
             Search
           </button>
         </div>

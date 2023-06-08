@@ -12,10 +12,10 @@ const RestaurentDetails = () => {
   ));
   return restaurentMenuItems ? (
     <div>
-      <div className="restaurent-info">
-        <h2>{restaurentInfo.name}</h2>
+      <div className="text-xl font-bold">
+        <h1>{restaurentInfo.name}</h1>
       </div>
-      <div className="dishes-container">{restaurentNames}</div>
+      <div className="flex flex-wrap">{restaurentNames}</div>
     </div>
   ) : (
     <Shimmer tilesCount={10} />

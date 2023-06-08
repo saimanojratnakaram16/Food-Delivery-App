@@ -1,5 +1,5 @@
 import React from "react";
-import { LOGO_URL } from "../utils/constants";
+import LOGO_URL from "../assets/img/logo.png";
 import NavList from "./NavList";
 
 const navs = {
@@ -11,8 +11,8 @@ const navs = {
 
 export default function HeaderComponent() {
   return (
-    <div className="header">
-      <div className="logo-container">
+    <div className="flex justify-between border-2 border-slate-400">
+      <div className="w-24">
         <img
           src={LOGO_URL}
           alt="company logo"
