@@ -13,7 +13,7 @@ const useRestaurentsList = () =>{
           RESTAURENTS_LIST
         );
         const jsonData = await data.json();
-        setAllRestaurents(jsonData?.data?.cards[1]?.data?.data?.cards);
+        setAllRestaurents(jsonData?.data?.cards[2]?.data?.data?.cards);
         
       }
       return allRestaurents;

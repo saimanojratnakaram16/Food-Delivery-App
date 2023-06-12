@@ -1,20 +1,30 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./components/About";
+import Help from "./components/Help";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
+import Profile from "./components/Profile";
+import UserDataContext from "./contexts/UserDataContext";
 
 const RestaurentDetails = lazy(() => import("./components/RestaurentDetails"));
 
 const AppLayout = () => {
+  const [userData, setUserData] = useState({
+    name: "Sai",
+    email: "sai@gmail.com",
+    address: "123 Main St",
+    phone: "9912991299",
+  });
   return (
     <div className="app-layout">
-      <HeaderComponent />
-      <Outlet />
+      <UserDataContext.Provider value={{userData:userData,setUserData:setUserData}}>
+        <HeaderComponent />
+        <Outlet />
+      </UserDataContext.Provider>
     </div>
   );
 };
@@ -25,8 +35,8 @@ const AppRouter = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
-        path: "about",
-        element: <About />,
+        path: "help",
+        element: <Help />,
       },
       {
         path: "contact",
@@ -35,6 +45,14 @@ const AppRouter = createBrowserRouter([
       {
         path: "/",
         element: <BodyComponent />,
+      },
+      {
+        path: "cart",
+        element: <Contact />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "restaurent/:restaurentId",

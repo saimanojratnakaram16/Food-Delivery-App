@@ -37,7 +37,7 @@ export default function BodyComponent() {
   }
   return allRestaurents?.length === 0 ? (
     <div className="m-4">
-    <Skimmer tilesCount={10}/>
+      <Skimmer tilesCount={10} />
     </div>
   ) : (
     <div>
@@ -45,15 +45,18 @@ export default function BodyComponent() {
         <div className="h-10 flex justify-center">
           <input
             type="text"
-            className="p-2 w-96 h-full border-2 border-slate-400 mr-2 rounded-md focus:border-orange-500"
+            className="p-2 w-96 h-full border-2 border-slate-400 mr-2 rounded-md"
             placeholder="Search for restaurents"
             value={searchText}
-            onKeyDown = {handleKeyDown}
+            onKeyDown={handleKeyDown}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="border-2 border-slate-400 h-full w-28 rounded-md " onClick={handleSearch}>
+          <button
+            className="border-2 border-slate-400 h-full w-28 rounded-md "
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>

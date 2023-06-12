@@ -12,9 +12,10 @@ const RestaurentDetails = () => {
   ));
   return restaurentMenuItems ? (
     <div>
-      <div className="text-xl font-bold">
-        <h1>{restaurentInfo.name}</h1>
-      </div>
+      <div className="text-xl font-bold m-2">{restaurentInfo.name} </div>
+        <div className="text-sm px-2 font-light">{restaurentInfo?.cuisines?.join(',')}</div>
+        <div className="text-sm px-2 font-light">{restaurentInfo?.areaName}</div>
+     
       <div className="flex flex-wrap">{restaurentNames}</div>
     </div>
   ) : (
