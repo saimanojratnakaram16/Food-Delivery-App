@@ -21,7 +21,7 @@ export default function BodyComponent() {
     setFilteredRestaurents(allRestaurents);
   },[allRestaurents])
 
-  const isOnline = useOnlineCheck();
+  // const isOnline = useOnlineCheck();
   const handleKeyDown = (event)=>{
     if(event.key == "Enter"){
       handleSearch();
@@ -32,9 +32,9 @@ export default function BodyComponent() {
     const filteredData = filterData(searchText, allRestaurents);
     setFilteredRestaurents(filteredData);
   };
-  if(!isOnline){
-    return <h2>You are Offline, Please check your internet connection</h2>
-  }
+  // if(!isOnline){
+  //   return <h2>You are Offline, Please check your internet connection</h2>
+  // }
   return allRestaurents?.length === 0 ? (
     <div className="m-4">
       <Skimmer tilesCount={10} />

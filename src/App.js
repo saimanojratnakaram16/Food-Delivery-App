@@ -9,6 +9,8 @@ import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
 import Profile from "./components/Profile";
 import UserDataContext from "./contexts/UserDataContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 const RestaurentDetails = lazy(() => import("./components/RestaurentDetails"));
 
@@ -21,10 +23,12 @@ const AppLayout = () => {
   });
   return (
     <div className="app-layout">
+      <Provider store={store}>
       <UserDataContext.Provider value={{userData:userData,setUserData:setUserData}}>
         <HeaderComponent />
         <Outlet />
       </UserDataContext.Provider>
+      </Provider>
     </div>
   );
 };

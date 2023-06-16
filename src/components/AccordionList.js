@@ -3,7 +3,7 @@ import { useState } from "react";
 const Accordion = ({ data, isOpen, ind, setIsOpen }) => {
   return (
     <>
-      <div className="p-2 flex justify-between bg-slate-200">
+      <div className="p-2 flex justify-between border-b-2 border-slate-400">
         <span className="text-xl cursor-pointer w-full" onClick={()=> isOpen ? setIsOpen(-1): setIsOpen(ind)}> {data.title}</span>
        {isOpen ? <button onClick={()=>setIsOpen(-1)}>Hide</button>
         : <button onClick={()=> setIsOpen(ind)}>Show</button>}
