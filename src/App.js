@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import UserDataContext from "./contexts/UserDataContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
+import Cart from "./components/Cart";
 
 const RestaurentDetails = lazy(() => import("./components/RestaurentDetails"));
 
@@ -52,7 +53,7 @@ const AppRouter = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <Contact />,
+        element: <Cart />,
       },
       {
         path: "/profile",

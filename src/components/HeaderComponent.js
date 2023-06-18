@@ -30,7 +30,7 @@ export default function HeaderComponent() {
         />
           </Link>
           <div className="py-2 font-serif">
-          <p > Welcome back, {userData.name}!</p>
+          <p > Welcome back, {userData?.name ? userData.name : "Buddy"}!</p>
           <p className="text-xs"> Hungry for delicious food? We've got you covered.</p>
           </div>
       </div>
