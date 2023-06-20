@@ -20,7 +20,7 @@ const DishItemCard = ({ dishDetails}) => {
   return (
     <div
       key={id}
-      className="w-3/5 m-2 p-4 border-b-2 border-slate-200"
+      className="m-2 p-4 border-t-2 border-slate-200"
     >
       <div className="flex flex-wrap justify-between">
         <div className="flex-1 pr-2">

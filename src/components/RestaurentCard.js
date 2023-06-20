@@ -7,7 +7,7 @@ export default function RestaurentCard({restaurentDetails}) {
       <div className='h-40 mb-2 flex justify-center'>
       <img className='h-full rounded-md' src = {CDN_URL + restaurentDetails.cloudinaryImageId} alt={restaurentDetails.name}/>
       </div>
-      <div className='restaurent-info'>
+      <div className='p-2'>
         <div className='font-semibold'>{restaurentDetails?.name}</div>
         <div className='font-light text-sm'>{restaurentDetails?.cuisines?.join(', ')}</div>
         <div className='flex justify-between font-light text-xs py-2'>
