@@ -9,7 +9,6 @@ const useOnlineCheck = ()=>{
         const handleOffline = ()=>{ setIsOnline(false);}
         window.addEventListener("online", handleOnline);
         window.addEventListener("offline", handleOffline);
-        console.log("Online", isOnline);
         return ()=>{
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);

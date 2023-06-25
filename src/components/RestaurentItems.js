@@ -4,9 +4,9 @@ import RestaurentCard from "./RestaurentCard";
 
 export default function RestaurentItems({ restaurentsList }) {
   const items = restaurentsList?.map((restaurent) => (
-    <Link to = {`restaurent/${restaurent?.data?.id}`} key={restaurent?.data?.id}>
+    <Link to = {`restaurent/${restaurent?.data?.data?.id}`} key={restaurent?.data?.data?.id}>
     <RestaurentCard
-      restaurentDetails={restaurent?.data}
+      restaurentDetails={restaurent?.data?.data}
     />
     </Link>
   ));

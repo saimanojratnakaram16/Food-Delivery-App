@@ -12,6 +12,7 @@ import UserDataContext from "./contexts/UserDataContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import FooterComponent from "./components/FooterComponent";
 
 const RestaurentDetails = lazy(() => import("./components/RestaurentDetails"));
 
@@ -28,6 +29,7 @@ const AppLayout = () => {
       <UserDataContext.Provider value={{userData:userData,setUserData:setUserData}}>
         <HeaderComponent />
         <Outlet />
+        <FooterComponent/>
       </UserDataContext.Provider>
       </Provider>
     </div>

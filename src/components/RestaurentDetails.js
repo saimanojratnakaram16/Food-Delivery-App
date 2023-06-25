@@ -7,12 +7,11 @@ const RestaurentDetails = () => {
   const { restaurentId } = useParams();
   const [restaurentInfo, restaurentMenuItems] =
     useRestaurentDetails(restaurentId);
-  console.log(restaurentInfo);
   const restaurentNames = restaurentMenuItems?.map((data, index) => {
     return <DishItemCard key={index} dishDetails={data?.card?.info} />;
   });
   return restaurentMenuItems ? (
-    <div className="flex justify-center flex-col w-2/5 m-auto">
+    <div className="flex justify-center flex-col w-2/5 m-auto py-3 my-5">
       <div className="p-3 flex items-center justify-between border-b-2 border-slate-200 border-dashed">
         <div>
           <p className="text-xl font-bold m-2">{restaurentInfo.name} </p>
@@ -76,9 +75,9 @@ const RestaurentDetails = () => {
             className="w-5 h-5 mr-2"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
           {" " + restaurentInfo?.sla.slaString}

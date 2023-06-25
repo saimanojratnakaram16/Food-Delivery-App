@@ -20,8 +20,8 @@ export default function HeaderComponent() {
   const isOnline = useOnlineCheck();
   return (
     <>
-    <div className="flex items-center justify-between border-2 border-slate-400">
-      <div className="flex items-center">
+    <div className="flex flex-wrap items-center justify-between border-2 border-slate-400">
+      <div className="flex items-center flex-wrap">
         <Link to="/">
         <img
           src={LOGO_URL}

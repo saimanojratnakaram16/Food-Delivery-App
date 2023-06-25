@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import RestaurentItems from "./RestaurentItems";
-import Skimmer from "./Shimmer";
+import Shimmer from "./Shimmer";
 import useRestaurentsList from "../hooks/useRestaurentsList";
 import useOnlineCheck from "../hooks/useOnlineCheck";
+import Pagination from "./Pagination";
 
 const filterData = (searchText, restaurents) => {
   const res = restaurents.filter((restaurent) =>
@@ -11,15 +12,21 @@ const filterData = (searchText, restaurents) => {
   return res;
 };
 
-export default function BodyComponent() {
+const BodyComponent = () => {
   
-  const allRestaurents = useRestaurentsList();
+ 
   const [filteredRestaurents, setFilteredRestaurents] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageRestaurents, totalRestaurents] = useRestaurentsList(currentPage);
+ 
+  const pages = [];
+  for(i=1;i<Math.ceil(totalRestaurents/15);i++){
+    pages.push(i);
+  }
   useEffect(()=>{
-    setFilteredRestaurents(allRestaurents);
-  },[allRestaurents])
+    setFilteredRestaurents(pageRestaurents);
+  },[pageRestaurents])
 
   // const isOnline = useOnlineCheck();
   const handleKeyDown = (event)=>{
@@ -32,20 +39,24 @@ export default function BodyComponent() {
     const filteredData = filterData(searchText, allRestaurents);
     setFilteredRestaurents(filteredData);
   };
+  const handlePageChange = (newPage) =>{
+    pageRestaurents.length = 0;
+    setCurrentPage(newPage);
+  }
   // if(!isOnline){
   //   return <h2>You are Offline, Please check your internet connection</h2>
   // }
-  return allRestaurents?.length === 0 ? (
+  return (!pageRestaurents || pageRestaurents?.length === 0) ? (
     <div className="m-4">
-      <Skimmer tilesCount={10} />
+      <Shimmer tilesCount={15} />
     </div>
   ) : (
     <div>
-      <div className="m-4 p-2">
-        <div className="h-10 flex justify-center">
+      <div className="w-[95%] mx-auto my-2 p-2">
+        <div className="h-14 flex flex-wrap justify-center">
           <input
             type="text"
-            className="p-2 w-96 h-full border-2 border-slate-400 mr-2 rounded-md"
+            className="p-2 w-96 h-10 border-2 border-slate-400 mr-2 rounded-md"
             placeholder="Search for restaurents"
             value={searchText}
             onKeyDown={handleKeyDown}
@@ -54,18 +65,26 @@ export default function BodyComponent() {
             }}
           />
           <button
-            className="border-2 border-slate-400 h-full w-28 rounded-md "
+            className="border-2 border-slate-400 h-10 w-28 rounded-md "
             onClick={handleSearch}
           >
             Search
           </button>
         </div>
+        <div className="my-2 py-2">
         {filteredRestaurents?.length === 0 ? (
           <div className="center"> No Such Restaurent Exists</div>
         ) : (
           <RestaurentItems restaurentsList={filteredRestaurents} />
         )}
+        </div>
+        <div className="">
+        <Pagination pageNumbers={pages} currentPage={currentPage} onPageClick  = {handlePageChange}/>
+        </div>
+        
       </div>
     </div>
   );
 }
+
+export default BodyComponent;

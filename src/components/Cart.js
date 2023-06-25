@@ -5,6 +5,8 @@ import DishItemCard from "./DistItemCard";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  const totalCost = cartItems.reduce((total, {price,count,defaultPrice}) => {
+    return total + count * (price || defaultPrice)}, 0);
 
   const selectedItems = cartItems.map(({ restaurentId, ...rest }) => (
     <DishItemCard
@@ -23,7 +25,7 @@ const Cart = () => {
             : "Your cart is Empty"}{" "}
         </p>
         <Link to="/">
-          <button className="bg-green-400 rounded-md p-2 text-sm">
+          <button className="bg-green-600 text-white rounded-md p-2 text-sm">
             {cartItems.length > 0
               ? "Continue Shopping"
               : "Let's pick something"}
@@ -31,7 +33,26 @@ const Cart = () => {
         </Link>
       </div>
       {!!cartItems.length && (
+        <>
         <div className="p-2 m-2 flex flex-wrap flex-col">{selectedItems}</div>
+        <div className="border-t-2 border-slate-400 m-2 p-2">
+          Bill Details 
+          <div className="mt-3 w-2/3 mx-auto">
+          <div className="flex justify-between font-light">
+            <p> Item total </p>
+            <p> {"₹ "+totalCost/100}</p>
+          </div>
+          <div className="flex justify-between font-light">
+            <p> Processing Fee( 2% ) </p>
+            <p> {"₹ "+(totalCost/100 * 0.02)}</p>
+          </div>
+          <div className="flex justify-between mt-2 pt-2 border-slate-200 border-t-2 ">
+            <p> YOU PAY </p>
+            <p> {"₹ "+(totalCost/100 * 1.02)}</p>
+          </div>
+          </div>
+        </div>
+        </>
       )}
     </div>
   );
