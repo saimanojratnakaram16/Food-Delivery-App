@@ -8,5 +8,5 @@ export default function Shimmer({ tilesCount }) {
       </div>
     );
   });
-  return <div className="flex flex-wrap">{shimmerCards}</div>;
+  return <div className="flex flex-wrap" data-testid = "shimmer-cards">{shimmerCards}</div>;
 }

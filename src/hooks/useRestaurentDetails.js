@@ -21,7 +21,6 @@ const useRestaurentDetails = (restaurentId) =>{
         );
         setRestaurentInfo(jsonData?.data?.cards[0]?.card?.card?.info);
       };
-
       return [restaurentInfo, restaurentMenuItems];
 
 }

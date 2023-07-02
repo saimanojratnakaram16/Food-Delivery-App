@@ -34,7 +34,7 @@ const Cart = () => {
       </div>
       {!!cartItems.length && (
         <>
-        <div className="p-2 m-2 flex flex-wrap flex-col">{selectedItems}</div>
+        <div className="p-2 m-2 flex flex-wrap flex-col" data-testid="items-in-cart">{selectedItems}</div>
         <div className="border-t-2 border-slate-400 m-2 p-2">
           Bill Details 
           <div className="mt-3 w-2/3 mx-auto">

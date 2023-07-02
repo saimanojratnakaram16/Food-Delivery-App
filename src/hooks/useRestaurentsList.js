@@ -16,6 +16,7 @@ const useRestaurentsList = (pageNumber) =>{
         let restaurentsData = jsonData?.data?.cards?.filter((card)=>card?.cardType === "restaurant");
         setAllRestaurentsData({allRestaurents:restaurentsData,totalRestaurents:jsonData?.data?.totalSize});    ;
       }
+      
       return [allRestaurentsData.allRestaurents, allRestaurentsData.totalRestaurents ];
 }
 

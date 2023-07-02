@@ -11,7 +11,7 @@ export default function RestaurentItems({ restaurentsList }) {
     </Link>
   ));
   return (
-    <div className="mx-5 my-2 flex flex-wrap">
+    <div className="mx-5 my-2 flex flex-wrap" data-testid = "restaurants-list">
       {items}
     </div>
   );

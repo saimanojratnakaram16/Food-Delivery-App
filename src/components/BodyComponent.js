@@ -4,10 +4,11 @@ import Shimmer from "./Shimmer";
 import useRestaurentsList from "../hooks/useRestaurentsList";
 import useOnlineCheck from "../hooks/useOnlineCheck";
 import Pagination from "./Pagination";
+import { RESTAURENTS_PER_PAGE } from "../utils/constants";
 
 const filterData = (searchText, restaurents) => {
   const res = restaurents.filter((restaurent) =>
-    restaurent?.data?.name?.toLowerCase().includes(searchText.toLowerCase())
+    restaurent?.data?.data?.name?.toLowerCase().includes(searchText.toLowerCase())
   );
   return res;
 };
@@ -20,10 +21,7 @@ const BodyComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageRestaurents, totalRestaurents] = useRestaurentsList(currentPage);
  
-  const pages = [];
-  for(i=1;i<Math.ceil(totalRestaurents/15);i++){
-    pages.push(i);
-  }
+
   useEffect(()=>{
     setFilteredRestaurents(pageRestaurents);
   },[pageRestaurents])
@@ -36,7 +34,7 @@ const BodyComponent = () => {
   }
   
   const handleSearch = () => {
-    const filteredData = filterData(searchText, allRestaurents);
+    const filteredData = filterData(searchText, pageRestaurents);
     setFilteredRestaurents(filteredData);
   };
   const handlePageChange = (newPage) =>{
@@ -59,6 +57,7 @@ const BodyComponent = () => {
             className="p-2 w-96 h-10 border-2 border-slate-400 mr-2 rounded-md"
             placeholder="Search for restaurents"
             value={searchText}
+            data-testid="search-input"
             onKeyDown={handleKeyDown}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -66,6 +65,7 @@ const BodyComponent = () => {
           />
           <button
             className="border-2 border-slate-400 h-10 w-28 rounded-md "
+            data-testid = "search-btn"
             onClick={handleSearch}
           >
             Search
@@ -79,7 +79,7 @@ const BodyComponent = () => {
         )}
         </div>
         <div className="">
-        <Pagination pageNumbers={pages} currentPage={currentPage} onPageClick  = {handlePageChange}/>
+        <Pagination totalPages={totalRestaurents} itemsPerPage={RESTAURENTS_PER_PAGE} currentPage={currentPage} onPageClick  = {handlePageChange}/>
         </div>
         
       </div>

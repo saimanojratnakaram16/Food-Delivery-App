@@ -24,7 +24,7 @@ const DishItemCard = ({ dishDetails}) => {
     >
       <div className="flex flex-wrap justify-between">
         <div className="flex-1 pr-2">
-          <p className="font-semibold ">{name}</p>
+          <p className="font-semibold " data-testid="item-name">{name}</p>
           <p className="text-sm">₹ {price / 100 || defaultPrice / 100}</p>  
           <p className="font-light text-xs mt-3">{descriptionDetails}</p>
           </div>
@@ -33,7 +33,8 @@ const DishItemCard = ({ dishDetails}) => {
            <div className="absolute text-xs -bottom-2 border-2 border-slate-200 text-center w-2/4 bg-white rounded-md p-1  left-[28%]">
           {!selector || selector?.count === 0 ? (
             <button
-              className="p-1 text-green-600 font-semibold"
+              className="p-1 text-green-600 "
+              data-testid = 'add-to-cart'
               onClick={handleAddItem}
             >
               + ADD
@@ -43,6 +44,7 @@ const DishItemCard = ({ dishDetails}) => {
               <button
                 className="px-1 font-semibold"
                 onClick={handleRemoveItem}
+                data-testid= 'remove-one-from-cart'
               >
                 -
               </button>
@@ -52,6 +54,7 @@ const DishItemCard = ({ dishDetails}) => {
               <button
                 className="px-1 text-green-600 font-semibold"
                 onClick={handleAddItem}
+                data-testid="add-one-to-cart"
               >
                 +
               </button>

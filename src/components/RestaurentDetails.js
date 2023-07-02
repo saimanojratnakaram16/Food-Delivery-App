@@ -7,7 +7,8 @@ const RestaurentDetails = () => {
   const { restaurentId } = useParams();
   const [restaurentInfo, restaurentMenuItems] =
     useRestaurentDetails(restaurentId);
-  const restaurentNames = restaurentMenuItems?.map((data, index) => {
+  const restaurantItems = restaurentMenuItems?.map((data, index) => {
+   
     return <DishItemCard key={index} dishDetails={data?.card?.info} />;
   });
   return restaurentMenuItems ? (
@@ -83,7 +84,7 @@ const RestaurentDetails = () => {
           {" " + restaurentInfo?.sla.slaString}
         </div>
       </div>
-      <div className="flex flex-col">{restaurentNames}</div>
+      <div className="flex flex-col" data-testid = 'restaurentItems-list'>{restaurantItems}</div>
     </div>
   ) : (
     <Shimmer tilesCount={10} />

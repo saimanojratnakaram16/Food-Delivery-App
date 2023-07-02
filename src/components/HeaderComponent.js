@@ -25,6 +25,7 @@ export default function HeaderComponent() {
         <Link to="/">
         <img
           src={LOGO_URL}
+          data-testid="site-logo"
           className="w-24 mx-2"
           alt="company logo"
         />

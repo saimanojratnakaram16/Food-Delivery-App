@@ -3,3 +3,4 @@ export const CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,
 export const RESTAURENT_DETAILS_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.385044&lng=78.486671&restaurantId="
 export const RESTAURENTS_LIST = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671"
 export const ISSUES_URL = "https://www.swiggy.com/dapi/support/issues/"
+export const RESTAURENTS_PER_PAGE = 15;
