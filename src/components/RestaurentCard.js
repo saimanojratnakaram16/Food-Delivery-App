@@ -3,7 +3,8 @@ import { CDN_URL } from '../utils/constants'
 
 export default function RestaurentCard({restaurentDetails}) {
   const {avgRating, name,cuisines, cloudinaryImageId, deliveryTime, costForTwoString} = restaurentDetails;
-  const ratingGradeColor = avgRating >=4 ? 'bg-green-600': (avgRating >=3 ? 'bg-orange-500' : 'bg-red-500'); 
+  const ratingGradeColor = avgRating === '--' ? 'bg-slate-600':(avgRating >=4 ? 'bg-green-600': (avgRating >=3 ? 'bg-orange-500' : 'bg-red-500'));
+  console.log(restaurentDetails); 
   
   return (
     <div className='w-72 m-2 p-2 h-full cursor-pointer hover:shadow-md shadow-slate-200'>
@@ -14,7 +15,7 @@ export default function RestaurentCard({restaurentDetails}) {
         <div className='font-semibold'>{name}</div>
         <div className='font-light text-sm'>{cuisines?.join(', ')}</div>
         <div className='flex items-center justify-between font-light text-xs py-2'>
-        <div className={`text-white flex p-1 ${ratingGradeColor}`}>
+        {avgRating && <div className={`text-white flex p-1 ${ratingGradeColor}`}>
         <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -27,7 +28,7 @@ export default function RestaurentCard({restaurentDetails}) {
                 clipRule="evenodd"
               />
             </svg>
-            {avgRating}</div>
+            {avgRating}</div>}
         <div>{deliveryTime} MINS</div>
         <div>{costForTwoString}</div>
         </div>

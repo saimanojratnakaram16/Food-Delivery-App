@@ -24,7 +24,7 @@ const AppLayout = () => {
     phone: "9912991299",
   });
   return (
-    <div className="app-layout">
+    <div className="app-layout mx-5 mt-5">
       <Provider store={store}>
       <UserDataContext.Provider value={{userData:userData,setUserData:setUserData}}>
         <HeaderComponent />

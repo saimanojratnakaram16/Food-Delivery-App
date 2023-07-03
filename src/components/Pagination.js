@@ -18,7 +18,7 @@ export default function Pagination({  currentPage, onPageClick, totalPages, item
             key={index}
             onClick={(e) => handlePageChange(e)}
             className={`p-2 m-2 border-2 border-slate-400 text-sm cursor-pointer ${
-              currentPage == number ? "bg-green-500 text-white" : ""
+              currentPage == number ? "bg-slate-600 text-white" : ""
             }`}
           >
             {number}

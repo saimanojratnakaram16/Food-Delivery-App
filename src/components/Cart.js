@@ -17,7 +17,8 @@ const Cart = () => {
   ));
 
   return (
-    <div className="p-2 mt-10 m-auto border-2 border-slate-200 rounded-md w-2/5">
+    <div className="min-h-[45vh]">
+    <div className="p-2 my-10 m-auto border-2 border-slate-200 rounded-md w-2/5">
       <div className="flex justify-between p-2 m-2 items-center">
         <p className="">
           {cartItems.length > 0
@@ -54,6 +55,7 @@ const Cart = () => {
         </div>
         </>
       )}
+    </div>
     </div>
   );
 };
