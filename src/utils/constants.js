@@ -2,5 +2,7 @@ export const LOGO_URL = "https://media.istockphoto.com/id/1218437637/vector/food
 export const CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"
 export const RESTAURENT_DETAILS_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.385044&lng=78.486671&restaurantId="
 export const RESTAURENTS_LIST = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671"
+export const UPDATE_RESTAURANT_LIST = "https://www.swiggy.com/dapi/restaurants/list/update"
 export const ISSUES_URL = "https://www.swiggy.com/dapi/support/issues/"
 export const RESTAURENTS_PER_PAGE = 15;
+export const MAX_DISPLAY_PAGES_PAGINATION = 8;

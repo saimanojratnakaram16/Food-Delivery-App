@@ -1,18 +1,23 @@
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import DishItemCard from "./DistItemCard";
+import RestaurantCategories from "./RestaurantCategories";
 import useRestaurentDetails from "../hooks/useRestaurentDetails";
+import { RUPEE_ICON, CLOCK_ICON } from "../assets/icons/icons";
 
 const RestaurentDetails = () => {
   const { restaurentId } = useParams();
   const [restaurentInfo, restaurentMenuItems] =
     useRestaurentDetails(restaurentId);
-  const restaurantItems = restaurentMenuItems?.map((data, index) => {
-   
-    return <DishItemCard key={index} dishDetails={data?.card?.info} />;
+  const restaurantItemsCategories = restaurentMenuItems?.map((data, index) => {
+    return (
+      <RestaurantCategories
+        key={data?.card?.card?.title}
+        categoryData={data?.card?.card}
+      />
+    );
   });
   return restaurentMenuItems ? (
-    <div className="flex justify-center flex-col w-2/5 m-auto py-3 my-5">
+    <div className="flex justify-center flex-col w-3/5 m-auto py-3 my-5">
       <div className="p-3 flex items-center justify-between border-b-2 border-slate-200 border-dashed">
         <div>
           <p className="text-xl font-bold m-2">{restaurentInfo.name} </p>
@@ -54,37 +59,17 @@ const RestaurentDetails = () => {
       </div>
       <div className="m-2 p-2 flex flex-wrap text-sm font-semibold items-center">
         <div className="flex border-2 border-slate-400 p-2 m-2 rounded-md">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-5 h-5 mr-2"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM9 7.5A.75.75 0 009 9h1.5c.98 0 1.813.626 2.122 1.5H9A.75.75 0 009 12h3.622a2.251 2.251 0 01-2.122 1.5H9a.75.75 0 00-.53 1.28l3 3a.75.75 0 101.06-1.06L10.8 14.988A3.752 3.752 0 0014.175 12H15a.75.75 0 000-1.5h-.825A3.733 3.733 0 0013.5 9H15a.75.75 0 000-1.5H9z"
-              clipRule="evenodd"
-            />
-          </svg>
+        {RUPEE_ICON}
           {" " + restaurentInfo?.costForTwoMessage}
         </div>
         <div className="flex border-2 border-slate-400 p-2 m-2 rounded-md">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-5 h-5 mr-2"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
-              clipRule="evenodd"
-            />
-          </svg>
+          {CLOCK_ICON}
           {" " + restaurentInfo?.sla.slaString}
         </div>
       </div>
-      <div className="flex flex-col" data-testid = 'restaurentItems-list'>{restaurantItems}</div>
+      <div className="flex flex-col" data-testid="restaurentItems-list">
+        {restaurantItemsCategories}
+      </div>
     </div>
   ) : (
     <Shimmer tilesCount={10} />

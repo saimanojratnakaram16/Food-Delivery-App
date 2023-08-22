@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { DOWN_ARROW, UP_ARROW } from "../assets/icons/icons";
 
 const Accordion = ({ data, isOpen, ind, setIsOpen }) => {
   return (
     <>
       <div className="p-2 flex justify-between border-b-2 border-slate-400">
         <span className="text-xl cursor-pointer w-full" onClick={()=> isOpen ? setIsOpen(-1): setIsOpen(ind)}> {data.title}</span>
-       {isOpen ? <button onClick={()=>setIsOpen(-1)}>Hide</button>
-        : <button onClick={()=> setIsOpen(ind)}>Show</button>}
+       {isOpen ? <button className="text-xl" onClick={()=>setIsOpen(-1)}>{UP_ARROW}</button>
+        : <button className="text-xl" onClick={()=> setIsOpen(ind)}>{DOWN_ARROW}</button>}
       </div>
       {isOpen &&
       <div className="p-2 m-2 text-lg">{data.description}</div>}

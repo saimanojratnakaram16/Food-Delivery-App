@@ -38,13 +38,15 @@ export default function Profile() {
     });
 
   return (
-    <div className="m-5 p-5">
+    <div className="min-h-[56vh]">
+    <div className="m-5 p-5 ">
       <div className=" m-2 p-2 border-2 border-slate-400 rounded-md">
         <div className="text-lg p-2 font-bold border-b-2 border-slate-200"> Profile Data</div>
         <form className="w-full max-w-sm m-2 p-2">
          {fields}
         </form>
       </div>
+    </div>
     </div>
   );
 }

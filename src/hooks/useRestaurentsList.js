@@ -13,8 +13,10 @@ const useRestaurentsList = (pageNumber) =>{
           RESTAURENTS_LIST+ "&offset="+offSetVal+"&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING"
         );
         const jsonData = await data.json();
-        let restaurentsData = jsonData?.data?.cards?.filter((card)=>card?.cardType === "restaurant");
-        setAllRestaurentsData({allRestaurents:restaurentsData,totalRestaurents:jsonData?.data?.totalSize});    ;
+        let restaurentsData = jsonData?.data?.cards?.filter((card)=>card?.card?.card?.id === "restaurant_grid_listing");
+        let restaurentsInfo = restaurentsData[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        restaurentsInfo = restaurentsInfo.map((restaurant)=>restaurant?.info);
+        setAllRestaurentsData({allRestaurents:restaurentsInfo,totalRestaurents:100});    
       }
       
       return [allRestaurentsData.allRestaurents, allRestaurentsData.totalRestaurents ];

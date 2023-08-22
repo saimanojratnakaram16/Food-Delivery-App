@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import RestaurentItems from "./RestaurentItems";
 import Shimmer from "./Shimmer";
 import useRestaurentsList from "../hooks/useRestaurentsList";
 import useOnlineCheck from "../hooks/useOnlineCheck";
 import Pagination from "./Pagination";
-import { RESTAURENTS_PER_PAGE } from "../utils/constants";
+import { RESTAURENTS_PER_PAGE, MAX_DISPLAY_PAGES_PAGINATION } from "../utils/constants";
 
 const filterData = (searchText, restaurents) => {
   const res = restaurents.filter((restaurent) =>
@@ -19,8 +19,7 @@ const BodyComponent = () => {
   const [filteredRestaurents, setFilteredRestaurents] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageRestaurents, totalRestaurents] = useRestaurentsList(currentPage);
- 
+  const [pageRestaurents, totalRestaurents] =  useRestaurentsList(currentPage) ;
 
   useEffect(()=>{
     setFilteredRestaurents(pageRestaurents);
@@ -37,10 +36,10 @@ const BodyComponent = () => {
     const filteredData = filterData(searchText, pageRestaurents);
     setFilteredRestaurents(filteredData);
   };
-  const handlePageChange = (newPage) =>{
+  const handlePageChange = useCallback( (newPage) =>{
     pageRestaurents.length = 0;
-    setCurrentPage(newPage);
-  }
+    newPage !== currentPage && setCurrentPage(newPage);
+  },[pageRestaurents]);
   // if(!isOnline){
   //   return <h2>You are Offline, Please check your internet connection</h2>
   // }
@@ -79,7 +78,7 @@ const BodyComponent = () => {
         )}
         </div>
         <div className="">
-        <Pagination totalPages={totalRestaurents} itemsPerPage={RESTAURENTS_PER_PAGE} currentPage={currentPage} onPageClick  = {handlePageChange}/>
+        <Pagination totalItems={totalRestaurents} itemsPerPage={RESTAURENTS_PER_PAGE} maxPagesToDisplay = {MAX_DISPLAY_PAGES_PAGINATION} currentPage={currentPage} onPageClick  = {handlePageChange}/>
         </div>
         
       </div>

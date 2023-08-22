@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard, { withPromotedLabel } from "./RestaurentCard";
 
 export default function RestaurentItems({ restaurentsList }) {
+  const PromotedRestaurent = withPromotedLabel(RestaurentCard);
+
   const items = restaurentsList?.map((restaurent) => (
-    <Link to = {`restaurent/${restaurent?.data?.data?.id}`} key={restaurent?.data?.data?.id}>
-    <RestaurentCard
-      restaurentDetails={restaurent?.data?.data}
-    />
+    <Link to = {`restaurent/${restaurent?.id}`} key={restaurent?.id}>
+   {restaurent?.promoted ? <PromotedRestaurent  restaurentDetails={restaurent}/> : <RestaurentCard
+      restaurentDetails={restaurent}
+    />}
     </Link>
   ));
   return (

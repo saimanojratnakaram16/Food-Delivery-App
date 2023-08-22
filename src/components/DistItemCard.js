@@ -10,7 +10,6 @@ const DishItemCard = ({ dishDetails}) => {
   const selector = useSelector((store) =>
     store.cart.items.find((item) => item?.id == id)
   );
-  const descriptionDetails = description?.split('.')[0];
   const handleAddItem = () => {
     dispatch(addItem({ imageId, name, id, price, defaultPrice }));
   };
@@ -26,11 +25,11 @@ const DishItemCard = ({ dishDetails}) => {
         <div className="flex-1 pr-2">
           <p className="font-semibold " data-testid="item-name">{name}</p>
           <p className="text-sm">₹ {price / 100 || defaultPrice / 100}</p>  
-          <p className="font-light text-xs mt-3">{descriptionDetails}</p>
+          <p className="font-light text-xs mt-3">{description}</p>
           </div>
           <div className="mb-2 relative">
-           <img className="h-20 rounded-md" src={CDN_URL + imageId} alt={name} />
-           <div className="absolute text-xs -bottom-2 border-2 border-slate-200 text-center w-2/4 bg-white rounded-md p-1  left-[28%]">
+           <img className="h-24 w-28 rounded-md" src={CDN_URL + imageId} alt={name} />
+           <div className="absolute text-xs -bottom-2 border-2 w-2/3 border-slate-200 text-center bg-white rounded-md p-1  left-[22%]">
           {!selector || selector?.count === 0 ? (
             <button
               className="p-1 text-green-600 "
@@ -66,5 +65,14 @@ const DishItemCard = ({ dishDetails}) => {
     </div>
   );
 };
+
+// export const withVegLabels = (props) => {
+//   return (props) => {
+//    return (<>
+//       <label>Veg</label>
+//       <DishItemCard {...props} />
+//     </>);
+//   };
+// };
 
 export default DishItemCard;
