@@ -53,7 +53,7 @@ const BodyComponent = () => {
         <div className="h-14 flex flex-wrap justify-center">
           <input
             type="text"
-            className="p-2 w-96 h-10 border-2 border-slate-400 mr-2 rounded-md"
+            className="p-2 w-96 h-10 border-2 border-slate-400 mr-2 rounded-md focus:outline-none"
             placeholder="Search for restaurents"
             value={searchText}
             data-testid="search-input"

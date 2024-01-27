@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, deleteItem } from "../utils/CartSlice";
 import { CDN_URL } from "../utils/constants";
-import store from "../utils/store";
 
 const DishItemCard = ({ dishDetails}) => {
   const { imageId, name, id, price, defaultPrice, description } = dishDetails;
