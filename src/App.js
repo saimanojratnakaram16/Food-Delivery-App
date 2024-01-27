@@ -24,7 +24,7 @@ const AppLayout = () => {
     phone: "9912991299",
   });
   return (
-    <div className="app-layout mx-5 mt-5">
+    <div className="app-layout mt-5">
       <Provider store={store}>
       <UserDataContext.Provider value={{userData:userData,setUserData:setUserData}}>
         <HeaderComponent />
@@ -74,6 +74,6 @@ const AppRouter = createBrowserRouter([
   },
 ]);
 
-rootElement = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = ReactDOM.createRoot(document.getElementById("root"));
 
 rootElement.render(<RouterProvider router={AppRouter} />);
